@@ -1,0 +1,74 @@
+.box {
+  opacity: 1;
+  border: white solid;
+  background-color: rgba(255, 250, 240, 0.144); 
+    display: flex;
+   align-items: center;  
+   margin: 30px; 
+   border-radius: 20px; 
+}
+#selec_menu{
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-inline: 9rem;
+}
+.cliquable {
+    transition: 0.5s;
+}
+.cliquable:hover {
+transition: 0.2s;
+transform: scale(1.1);
+}
+.title {
+    display: flex;
+    justify-content: center;
+    margin: 5rem;
+}
+.paragraphs {
+    font-family: 'Courier New', Courier, monospace;   
+    display: block;
+    margin: 10rem;
+justify-self: center
+}
+.paragraphs2 {
+    font-family: 'Courier New', Courier, monospace;  
+    text-shadow: 1px 1px 3px black;
+    color: aliceblue;
+    font-weight: bold; 
+    display: block;
+    margin: 30px;
+    text-align: justify;
+justify-self: center
+}
+body{
+    object-fit: fill;
+    position: fixed;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 2%;
+}
+.bgvideo{
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: -1;
+}
+video{
+    object-fit: fill;
+}
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 1px 2px 5px black;
+    text-align: center;
+    color: aliceblue;
+}
+.underbox{
+    padding: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: rgba(255, 250, 240, 0.144);
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.404);
+}
