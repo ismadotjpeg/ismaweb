@@ -1,7 +1,51 @@
+.musicplayer_container{
+    height: 190px;
+    width: 240px;
+    position: fixed;
+    bottom: 0;
+    right: 2%;
+    background-color: white;
+    border: solid black;
+    border-width: 3px;
+    z-index: 5;
+    transform: translateY(80%);
+
+    display: grid;
+    gap: 2px;
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 1fr;
+    justify-items:  center;
+    align-items: center;
+
+    transition: ease-in-out 0.9s;
+}
+.musicplayer_container:hover{
+    transform: translateY(0);
+    transition: ease-in-out 0.9s;
+}
+@media only screen and (max-width: 800px){
+    .musicplayer_container{
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes rotation {
+    0% {transform: rotateZ(0);}
+    100% {transform: rotateZ(360deg);}
+}
+
 body{
     background-color: black;
+    overflow-x: hidden;
+}
+p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: aliceblue;
 }
 #main-header{
+    position: relative;
     display: block;
     justify-self: center;
     margin: 4px;
@@ -48,7 +92,10 @@ body{
     position: relative;
 }
 .navitext{
-    font-family: 'Courier New', Courier, monospace; color: rgb(255, 253, 253); font-weight: bold; text-shadow: 0 0 5px rgb(0, 0, 0);
+    pointer-events: none;
+    font-family: 'Courier New', Courier, monospace; color: rgb(255, 253, 253);
+     /* font-weight: bold;  */
+     text-shadow: 0 0 5px rgb(0, 0, 0);
     padding: 9%;
     z-index: 30;
     position: absolute;
@@ -57,14 +104,13 @@ body{
     font-size: 80%;
     opacity: 0;
     transition: 0.7s ease-out;
-    width: 100px;
+    width: 110px;
 
     background: linear-gradient(0deg,transparent,#ffffff94 33%, rgb(255, 255, 255));
     border-radius: 5px;
 }
-.navitext:hover{
+.cliquable:hover .navitext{
     transition: 1s cubic-bezier(.16,.13,0,1);
-    /* transform: scaleY(150%); */
     transform: translateY(-60%);
     opacity: 1;
 }
@@ -72,11 +118,25 @@ body{
     z-index: 0;
     transition: 0.5s;
 }
-.cliquable:hover {
+.cliquable:hover .backdrop{
+    transition: 0.5s ease-out;
+    opacity: 0.9;
+}
+.cliquable:hover{
     z-index: 0;
     transition: 0.2s;
 transform: scale(1.22);
 }
+.backdrop{
+    height: 700px;
+    width: 200%;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.5s;
+    mask-image: radial-gradient(white, black 30%);
+    mask-mode: luminance;
+}
+
 .title {
     display: flex;
     justify-self: center;
@@ -92,10 +152,10 @@ transform: scale(1.22);
 justify-self: center
 }
 .paragraphs2 {
-    font-family: 'Courier New', Courier, monospace;
+    /* font-family: 'Courier New', Courier, monospace; */
     text-shadow: 1px 1px 3px black;
     color: aliceblue;
-    font-weight: bold;
+    /* font-weight: bold; */
     display: block;
     margin: 30px;
     text-align: left;
@@ -115,7 +175,7 @@ video{
 }
 h1,h2,h3,h4,h5{
     font-family: 'Courier New', Courier, monospace;
-    text-shadow: 1px 2px 5px black;
+    /* text-shadow: 1px 2px 5px black; */
     /* text-align: center; */
     justify-content: center;
     align-items: center;
@@ -132,12 +192,36 @@ h1,h2,h3,h4,h5{
     border-left: solid rgba(255, 255, 255, 0.377) 1px;
     overflow: hidden;
     margin: 1%;
+
+    /* justify-content: center; */
+}
+.present{
+    padding-left: 150px;
+}
+#actu{
+transform: rotate(1deg);
+
+    border-radius: 1px;
+    overflow: visible;
+    width: min(100% ,350px);
+    border: solid rgb(0, 0, 0);
+    border-width: 3px;
+    height: 200px;
+    align-content: center;
+}
+#actu::after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.637);
+    position: fixed; top: 0; left: 0;
+    z-index: -1;
 }
 .container{
     display: flex;
     flex-wrap: wrap;
     justify-self: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin: 4%;   
     animation-name: Zspin;
     animation-duration: 1.4s;
@@ -145,13 +229,27 @@ h1,h2,h3,h4,h5{
     animation-timing-function: cubic-bezier(.02,.5.0.1);
 }
 /* copyright footer*/
-.details{
+footer{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-inline: auto;
+    justify-content: center;
+    justify-self: center;
+    gap: 10%;
+}
+.details {
     justify-self: center;
 
     font-size: 1em;
     font-family: 'Courier New', Courier, monospace;
     color: rgb(212, 212, 212);
     font-weight: lighter;
+
+    height: 42px;
+}
+#detailsmainpage{
+    fill: aliceblue; 
 }
 /* style pour le materiel*/
 @keyframes raise {
@@ -167,17 +265,36 @@ overflow-x: hidden;
 .gearwriting{
     position: relative;
     z-index: 5;
-    font-family: 'Courier New', Courier, monospace;
-    text-shadow: 1px 2px 5px black;
+    /* font-family: 'Courier New', Courier, monospace; */
+    text-shadow: 1px 2px 5px rgba(0, 0, 0, 0.274);
     color: aliceblue;
-    font-weight: bold;
+    /* font-weight: bold; */
+}
+.gearitem::after{
+    content: "";
+    background: radial-gradient(rgb(255, 179, 39), transparent 60%); z-index: -1;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    opacity: 0;
+    animation: bob 0.8s ease-in-out infinite alternate;
+    transition: 0.5s;
+}
+.gearitem:hover::after{
+    opacity: 0.3;
+    transition: 0.5s;
 }
 .gearcontainer{
-    display: inline-flex;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     flex-wrap: wrap;
-    padding: 2%;
+    padding: 2px;
 
     animation: raise 1.5s cubic-bezier(.05,.1,0,1) 1 ;
 }
@@ -200,6 +317,11 @@ overflow-x: hidden;
     padding-inline: 30px;
     margin: 1%;
 }
+@keyframes bob{
+    0% {transform: rotate(-3deg); }
+    100% {transform: rotate(3deg);}
+}
+
 a:link, a:visited{
     text-decoration: none;
     color: rgb(224, 177, 48);
@@ -224,7 +346,7 @@ transition: 0.5s ease-in-out;
     0% {transform: translate(0);}
     100% {transform: translate(0, -10%);}
 }
-.loadericon{
+.loadericon {
     fill: rgb(255, 255, 255);
     stroke: white;
     stroke-width: 0px;

@@ -3,8 +3,8 @@ a:link {
 }
 p {
     color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+    /* font-family: 'Courier New', Courier, monospace; */
+    /* font-weight: bold; */
     text-shadow: 1px 1px 3px black;
     font-size: 0.9rem;
     text-align: left;
@@ -13,7 +13,7 @@ h1,h2,h3,h4{
     color: rgb(240, 248, 255);
     font-family: sans-serif;
     font-weight: bold;
-    text-shadow: 0 0 30px white;
+    text-shadow: 0 0 30px rgb(245, 229, 229);
     text-align: left;
 }
 body{
