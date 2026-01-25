@@ -28,6 +28,7 @@
         visibility: hidden;
         opacity: 0;
         display: none;
+        position: fixed;
     }
 }
 
@@ -65,7 +66,8 @@ p{
 .box {
   opacity: 1;
   border: white solid;
-  background-color: rgba(255, 250, 240, 0.144);
+  /* background-color: rgba(255, 250, 240, 0.144); */
+  background: linear-gradient( rgba(255, 255, 255, 0.534), rgba(0, 0, 0, 0.219));
   backdrop-filter: blur(2px);
    display: flex;
    align-items: center;
@@ -106,12 +108,12 @@ p{
     transition: 0.7s ease-out;
     width: 110px;
 
-    background: linear-gradient(0deg,transparent,#ffffff94 33%, rgb(255, 255, 255));
+    background: linear-gradient(0deg,transparent,#ffffff94 17%, rgb(0, 0, 0));
     border-radius: 5px;
 }
 .cliquable:hover .navitext{
     transition: 1s cubic-bezier(.16,.13,0,1);
-    transform: translateY(-60%);
+    transform: translateY(-73%);
     opacity: 1;
 }
 .cliquable {
@@ -167,7 +169,7 @@ justify-self: center
     top: 0;
     left: 0;
     min-height: 100%;
-    min-width: 100%;
+    width: 100%;
     z-index: -1;
 }
 video{
@@ -197,6 +199,16 @@ h1,h2,h3,h4,h5{
 }
 .present{
     padding-left: 150px;
+    background-image: url(./assets/pngs/lorat2.jpg);
+    background-size: cover;
+}
+.present p{
+    color: black;
+    text-shadow: 0 0 3px black;
+}
+.present h1{
+    color: black;
+    text-shadow: 0 0 3px black;
 }
 #actu{
 transform: rotate(1deg);
@@ -252,6 +264,19 @@ footer{
     fill: aliceblue; 
 }
 /* style pour le materiel*/
+#microkorg{
+    margin: -6%; 
+}
+
+@media only screen and (max-width:500px) {
+    .smallgearitem{
+        width: 80%;
+    }
+    #microkorg{
+        margin-bottom: -19%;
+    }
+    
+}
 @keyframes raise {
     0% {transform: translate(0, 100vh);}
     100%{transform: translate(0);}
