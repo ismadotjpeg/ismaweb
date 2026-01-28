@@ -41,7 +41,7 @@ body{
     background-color: black;
     overflow-x: hidden;
 }
-p{
+p, ul{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: aliceblue;
 }
@@ -116,7 +116,7 @@ p{
     transform: translateY(-73%);
     opacity: 1;
 }
-.cliquable {
+.cliquable{
     z-index: 0;
     transition: 0.5s;
 }
@@ -128,6 +128,13 @@ p{
     z-index: 0;
     transition: 0.2s;
 transform: scale(1.22);
+}
+.cliquable_s{
+    transition: 0.5s;
+}
+.cliquable_s:hover{
+    transition: 0.2s;
+transform: scale(1.1);
 }
 .backdrop{
     height: 700px;
@@ -146,7 +153,11 @@ transform: scale(1.22);
     margin: 4%;
     margin-bottom: 0;
 }
-
+#presentationparagraph{
+    z-index: 4;
+    background-color: white;
+    transform: rotate(2deg);
+}
 .paragraphs {
     font-family: 'Courier New', Courier, monospace;
     display: block;
@@ -204,7 +215,7 @@ h1,h2,h3,h4,h5{
 }
 .present p{
     color: black;
-    text-shadow: 0 0 3px black;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.623);
 }
 .present h1{
     color: black;
@@ -264,6 +275,10 @@ footer{
     fill: aliceblue; 
 }
 /* style pour le materiel*/
+#boutoninvisible{
+    background: none;
+    border: none;
+}
 #microkorg{
     margin: -6%; 
 }

@@ -7,3 +7,12 @@ window.addEventListener("load", () => {
                 document.body.removeChild(loader);
             });
         });
+        function Guitar(){
+            var sound = document.getElementById('guitaraudio');
+            sound.play();
+        }
+        /*test vite fait*/
+        function playlavid(){
+            var video = document.getElementById('promokesha');
+            video.play();
+        }
